@@ -11,10 +11,16 @@ function gas () {
     radio.sendString("!23:GAS:" + gas_mV + "#")
     basic.pause(10000)
 }
+function IRsensor () {
+    radio.sendString("!16:INFRARED:" + pins.digitalReadPin(DigitalPin.P2) + "#")
+    basic.pause(1000)
+}
 let gas_mV = 0
 let gas_raw = 0
 radio.setGroup(1)
+led.enable(false)
 basic.forever(function () {
     dht11()
     gas()
+    IRsensor()
 })
