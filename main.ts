@@ -8,13 +8,15 @@ function dht11 () {
 function gas () {
     gas_raw = pins.analogReadPin(AnalogPin.P1)
     gas_mV = Math.map(gas_raw, 0, 1023, 0, 3300)
-    radio.sendString("!23:GAS:" + gas_mV + "#")
+    gas_percent = Math.map(gas_mV, 0, 3300, 0, 100)
+    radio.sendString("!23:GAS:" + gas_percent + "#")
     basic.pause(10000)
 }
 function IRsensor () {
     radio.sendString("!16:INFRARED:" + pins.digitalReadPin(DigitalPin.P2) + "#")
     basic.pause(1000)
 }
+let gas_percent = 0
 let gas_mV = 0
 let gas_raw = 0
 radio.setGroup(1)
