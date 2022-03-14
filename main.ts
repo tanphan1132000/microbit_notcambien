@@ -13,25 +13,25 @@ function gas () {
     basic.pause(10000)
 }
 function IRsensor () {
-    if (isAutoIR) {
+    if (isIRsensor) {
         radio.sendString("!16:INFRARED:" + pins.digitalReadPin(DigitalPin.P2) + "#")
         basic.pause(1000)
     }
 }
 radio.onReceivedString(function (receivedString) {
-    if (receivedString == "AUTO:OFF") {
-        isAutoIR = false
-    } else if (receivedString == "AUTO:ON") {
-        isAutoIR = true
+    if (receivedString == "IR:OFF") {
+        isIRsensor = false
+    } else if (receivedString == "IR:ON") {
+        isIRsensor = true
     }
 })
 let gas_percent = 0
 let gas_mV = 0
 let gas_raw = 0
-let isAutoIR = false
+let isIRsensor = false
 radio.setGroup(1)
 led.enable(false)
-isAutoIR = true
+isIRsensor = true
 basic.forever(function () {
     dht11()
     gas()
