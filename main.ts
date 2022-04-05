@@ -1,8 +1,7 @@
 function dht11 () {
     NPNBitKit.DHT11Read(DigitalPin.P0)
-    radio.sendString("!7:TEMP:" + NPNBitKit.DHT11Temp() + "#")
-    basic.pause(100)
-    radio.sendString("!7:HUMI:" + NPNBitKit.DHT11Hum() + "#")
+    serial.writeString("!7:TEMP:" + NPNBitKit.DHT11Temp() + "#")
+    serial.writeString("!7:TEMP:" + NPNBitKit.DHT11Hum() + "#")
     basic.pause(30000)
 }
 function gas () {
