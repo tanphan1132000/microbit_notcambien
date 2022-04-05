@@ -2,7 +2,7 @@ function dht11 () {
     NPNBitKit.DHT11Read(DigitalPin.P0)
     serial.writeString("!7:TEMP:" + NPNBitKit.DHT11Temp() + "#")
     serial.writeString("!7:TEMP:" + NPNBitKit.DHT11Hum() + "#")
-    basic.pause(30000)
+    basic.pause(1000)
 }
 function gas () {
     gas_raw = pins.analogReadPin(AnalogPin.P1)
