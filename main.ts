@@ -1,7 +1,7 @@
 function dht11 () {
     NPNBitKit.DHT11Read(DigitalPin.P0)
     serial.writeString("!7:TEMP:" + NPNBitKit.DHT11Temp() + "#")
-    serial.writeString("!7:TEMP:" + NPNBitKit.DHT11Hum() + "#")
+    serial.writeString("!7:HUMI:" + NPNBitKit.DHT11Hum() + "#")
     basic.pause(1000)
 }
 function gas () {
